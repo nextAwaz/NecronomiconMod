@@ -44,7 +44,7 @@ public class NecDatagenAPI {
      * @author  ElocinDev
      * @since   1.1.0
      */
-    abstract class Model {
+    public static abstract class Model {
         //#if FABRIC==1
 
         /**

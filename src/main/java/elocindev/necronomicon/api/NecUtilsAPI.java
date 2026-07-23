@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 //#else
 //$$ import net.minecraft.world.entity.Entity;
 //$$ import net.minecraft.world.entity.EntityType;
@@ -15,7 +16,6 @@ import net.minecraft.util.math.Vec3d;
 //$$ import net.minecraft.world.phys.Vec3;
 //$$ import net.minecraft.world.level.Level;
 //#endif
-import net.minecraft.world.World;
 
 /**
  * A class containing a series of general utilities.

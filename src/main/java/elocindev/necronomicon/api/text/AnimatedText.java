@@ -30,30 +30,35 @@ public enum AnimatedText {
         return this.id;
     }
 
-
-    public 
+    public
         //#if FABRIC==1
-        MutableText 
+        MutableText
         //#else
         //$$ MutableComponent
         //#endif
-    getText(Text text) {
+    getText(
+        //#if FABRIC==1
+        Text text
+        //#else
+        //$$ Component text
+        //#endif
+    ) {
         return this.getText(text, 0);
     }
 
-    public 
+    public
         //#if FABRIC==1
-        MutableText 
+        MutableText
         //#else
         //$$ MutableComponent
         //#endif
 
     getText(
         //#if FABRIC==1
-        Text text, 
+        Text text,
         //#else
-        //$$ Component text, 
-        //#endif       
+        //$$ Component text,
+        //#endif
     int offset) {
         switch (this) {
             case EMPTY -> {
