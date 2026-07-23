@@ -13,4 +13,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Necronomicon"
+rootProject.name = "necronomicon-fabric-1201"

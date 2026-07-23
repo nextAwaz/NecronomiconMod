@@ -6,6 +6,8 @@ plugins {
 version = "1.4.2"
 base.archivesName.set("necronomicon-fabric-1.20.1")
 
+val rootDir = projectDir.parentFile.parentFile
+
 repositories {
     mavenCentral()
     maven("https://maven.fabricmc.net/")
@@ -13,7 +15,7 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:1.20.1")
-    mappings(loom.officialMojangMappings())
+    mappings("net.fabricmc:yarn:1.20.1+build.10:v2")
     modImplementation("net.fabricmc:fabric-loader:0.14.22")
     modImplementation("net.fabricmc.fabric-api:fabric-api:0.92.0+1.20.1")
 }
@@ -23,19 +25,20 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-// Preprocessing
-val preprocessJava by tasks.registering(Exec::class) {
-    commandLine("python3", "preprocess.py", "fabric",
-        "src/main/java", "build/preprocessed/java")
+val preprocessJava = tasks.register<Exec>("preprocessJava") {
+    commandLine("python3", rootDir.resolve("preprocess.py").path, "fabric",
+        rootDir.resolve("src/main/java").path,
+        layout.buildDirectory.dir("preprocessed/java").get().asFile.path)
 }
-val preprocessResources by tasks.registering(Exec::class) {
-    commandLine("python3", "preprocess.py", "fabric",
-        "src/main/resources", "build/preprocessed/resources")
+val preprocessResources = tasks.register<Exec>("preprocessResources") {
+    commandLine("python3", rootDir.resolve("preprocess.py").path, "fabric",
+        rootDir.resolve("src/main/resources").path,
+        layout.buildDirectory.dir("preprocessed/resources").get().asFile.path)
 }
 sourceSets {
     main {
-        java.setSrcDirs(listOf("build/preprocessed/java"))
-        resources.setSrcDirs(listOf("build/preprocessed/resources"))
+        java.setSrcDirs(listOf(layout.buildDirectory.dir("preprocessed/java")))
+        resources.setSrcDirs(listOf(layout.buildDirectory.dir("preprocessed/resources")))
     }
 }
 tasks.named("compileJava") { dependsOn(preprocessJava) }
