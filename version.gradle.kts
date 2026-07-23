@@ -57,6 +57,7 @@ dependencies {
         modImplementation(
             "net.fabricmc.fabric-api:fabric-api:${
                 when (mcData.version) {
+                    12001 -> "0.92.0+1.20.1"
                     11904 -> "0.78.0+1.19.4"
                     11802 -> "0.76.0+1.18.2"
                     else -> throw IllegalStateException("Invalid MC version: ${mcData.version}")
@@ -64,7 +65,7 @@ dependencies {
             }"
         )
 
-        modImplementation("net.fabricmc:fabric-language-kotlin:1.8.6+kotlin.1.7.21")
+        modImplementation("net.fabricmc:fabric-language-kotlin:1.10.2+kotlin.1.9.22")
     } else if (mcData.isForge) {
         implementation("thedarkcolour:kotlinforforge:3.8.0")
     }
