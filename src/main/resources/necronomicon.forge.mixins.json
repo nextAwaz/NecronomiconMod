@@ -1,5 +1,6 @@
 {
   "required": false,
+  "minVersion": "0.8",
   "package": "elocindev.necronomicon.mixin.forge",
   "compatibilityLevel": "JAVA_16",
   "injectors": {

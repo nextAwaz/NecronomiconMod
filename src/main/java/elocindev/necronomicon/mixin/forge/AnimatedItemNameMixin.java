@@ -23,7 +23,7 @@ package elocindev.necronomicon.mixin.forge;
 //$$     private void getName(CallbackInfoReturnable<Component> cir) {
 //$$         ItemStack stack = (ItemStack)(Object)this;
 
-//$$         if((Object) stack.getItem() instanceof IAnimatedText dynamicItemName) {
+//$$         if (stack.getItem() instanceof IAnimatedText dynamicItemName && dynamicItemName.getAnimatedName(stack) != null) {
 //$$             CompoundTag nbtCompound = stack.getTagElement("display");
 
 //$$             if (nbtCompound != null && nbtCompound.contains("Name", 8)) {

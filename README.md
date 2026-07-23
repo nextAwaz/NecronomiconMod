@@ -2,6 +2,8 @@
 An API to make less repetitive code, sync changes and bring parity to both loaders with common code.
 It also implements some bug fixes to make my mods work properly.
 
+**License:** Mozilla Public License 2.0 (MPL-2.0)
+
 ## Features
 🛠️ Easy to use config API for both loaders.
 

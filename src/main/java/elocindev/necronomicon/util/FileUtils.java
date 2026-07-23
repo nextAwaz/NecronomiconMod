@@ -13,31 +13,27 @@ import com.google.gson.JsonParser;
 
 public class FileUtils {
     public static void setPrettyPrint(Path path) {
-        try {
-            String line;
+        StringBuilder sb = new StringBuilder();
 
-            FileReader fileReader = new FileReader(path.toFile());
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            StringBuilder sb = new StringBuilder();
-            
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path.toFile()))) {
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 sb.append(line).append("\n");
             }
-            
-            fileReader.close();
-            
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
 
-            String jsonString = sb.toString();
+        String jsonString = sb.toString();
 
-            JsonElement jsonElement = JsonParser.parseString(jsonString);
+        JsonElement jsonElement = JsonParser.parseString(jsonString);
 
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            String prettyJson = gson.toJson(jsonElement);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String prettyJson = gson.toJson(jsonElement);
 
-            FileWriter fileWriter = new FileWriter(path.toFile());
+        try (FileWriter fileWriter = new FileWriter(path.toFile())) {
             fileWriter.write(prettyJson);
-            fileWriter.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

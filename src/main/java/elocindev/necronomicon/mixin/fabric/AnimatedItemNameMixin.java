@@ -19,7 +19,7 @@ public abstract class AnimatedItemNameMixin {
     private void getName(CallbackInfoReturnable<Text> cir) {
         ItemStack stack = (ItemStack) (Object) this;
 
-        if((Object) stack.getItem() instanceof IAnimatedText dynamicItemName) {
+        if (stack.getItem() instanceof IAnimatedText dynamicItemName && dynamicItemName.getAnimatedName(stack) != null) {
             NbtCompound nbtCompound = stack.getSubNbt("display");
 
             if (nbtCompound != null && nbtCompound.contains("Name", 8)) {

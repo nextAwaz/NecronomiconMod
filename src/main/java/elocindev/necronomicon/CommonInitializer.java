@@ -47,8 +47,13 @@ public class CommonInitializer implements ModInitializer {
      * @author ElocinDev
      */
     public static void init() {
-        NecConfigAPI.registerConfig(NecronomiconConfig.class);
-        
+        try {
+            NecConfigAPI.registerConfig(NecronomiconConfig.class);
+        } catch (Exception e) {
+            LOGGER.error("Failed to register Necronomicon config", e);
+        }
+
+        // Easter egg: intentional joke when certain mods are loaded
         if (NecUtilsAPI.isModLoaded("embeddium")) {
             String yes = "there is a brick about to fall through your roof at terminal velocity";
 

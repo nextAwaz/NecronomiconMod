@@ -31,7 +31,7 @@ public class NecNbtAPI {
      * @since 1.0.8
      * @author ElocinDev
      */
-    abstract class Cooldown {
+    public static abstract class Cooldown {
         /**
          * Adds a cooldown value to the entity.
          * 
@@ -87,7 +87,7 @@ public class NecNbtAPI {
      * @since 1.0.8
      * @author ElocinDev
      */
-    abstract class Entity {
+    public static abstract class Entity {
         /**
          * Gets the NBT compound of the entity.
          * 

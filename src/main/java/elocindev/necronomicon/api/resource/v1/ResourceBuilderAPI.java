@@ -196,7 +196,7 @@ public class ResourceBuilderAPI {
         instance.getModContainer(modid)
                         .map(container -> ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(modid, id),
                                 container, description, type))
-                        .filter(success -> !success).ifPresent(success -> LOGGER.warn("Could not register built-in resource pack. "+modid, id));
+                        .filter(success -> !success).ifPresent(success -> LOGGER.warn("Could not register built-in resource pack: {}", id));
         //#endif
     }
 }

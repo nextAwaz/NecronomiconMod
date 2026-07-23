@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="*"
-license='MIT'
+license='MPL-2.0'
 
 [[mods]]
 modId="${mod_id}"

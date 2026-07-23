@@ -16,21 +16,21 @@ import net.minecraft.text.Text;
 
 /**
  * An API containing methods to set the style of a text.
- * 
+ *
  * @minecraft   1.19 and above
  * @loader      Fabric, Forge
- * 
+ *
  * @since       1.3.0
  * @author      ElocinDev
  */
 public class TextAPI {
     /**
      * Sets the text's style to a 2 color gradient, static.
-     * 
+     *
      * @param text      The text to set the style of.
      * @param color1    The first color of the gradient.
      * @param color2    The second color of the gradient.
-     * 
+     *
      * @since 1.3.0
      * @author ElocinDev
      */
@@ -39,18 +39,18 @@ public class TextAPI {
         MutableText text,
         //#else
         //$$ MutableComponent text,
-        //#endif        
+        //#endif
     int color1, int color2) {
         text.setStyle(Styles.getStaticGradient(text, color1, color2).getStyle());
     }
 
     /**
      * Sets the text's style to a 2 color gradient, animated.
-     * 
+     *
      * @param text      The text to set the style of.
      * @param color1    The first color of the gradient.
      * @param color2    The second color of the gradient.
-     * 
+     *
      * @since 1.3.0
      * @author ElocinDev
      */
@@ -59,20 +59,20 @@ public class TextAPI {
         MutableText text,
         //#else
         //$$ MutableComponent text,
-        //#endif       
+        //#endif
     int offset, int color1, int color2, float tickrate) {
         text.setStyle(Styles.getGradient(text, offset, color1, color2, tickrate).getStyle());
     }
 
     /**
      * Sets the text's style to a breathing gradient, animated.
-     * 
+     *
      * @param text      The text to set the style of.
      * @param offset    The offset of the breathing gradient.
      * @param color1    The first color of the breathing gradient.
      * @param color2    The second color of the breathing gradient.
      * @param tickrate  The update tickrate. Lower is faster.
-     * 
+     *
      * @since 1.3.0
      * @author ElocinDev
      */
@@ -81,18 +81,18 @@ public class TextAPI {
         MutableText text,
         //#else
         //$$ MutableComponent text,
-        //#endif 
+        //#endif
     int offset, int color1, int color2, float tickrate) {
         text.setStyle(Styles.getBreathingGradient(text, offset, color1, color2, tickrate).getStyle());
     }
 
     /**
      * Sets the text's style to a rainbow gradient, animated.
-     * 
+     *
      * @param text      The text to set the style of.
      * @param offset    The offset of the rainbow gradient.
      * @param tickrate  The update tickrate. Lower is faster.
-     * 
+     *
      * @since 1.3.0
      * @author ElocinDev
      */
@@ -101,14 +101,14 @@ public class TextAPI {
         MutableText text,
         //#else
         //$$ MutableComponent text,
-        //#endif 
+        //#endif
     int offset, float tickrate) {
         text.setStyle(Styles.getRainbowGradient(text, offset, tickrate).getStyle());
     }
 
 
 
-    public class Styles {
+    public static class Styles {
         public static MutableText getStaticGradient(
             //#if FABRIC==1
             Text text,
@@ -142,7 +142,7 @@ public class TextAPI {
 
             var gradientColor = getEmptyText();
             String string = text.getString();
-            
+
             for (int i = 0; i < string.length(); i++) {
                 double hue = (time - i - offset) % 45.0;
                 Style style = Style.EMPTY.withColor(ColorUtils.gradientSlide(((float) hue / 22.5F), new Color(color1), new Color(color2)).getRGB());
@@ -201,7 +201,7 @@ public class TextAPI {
         }
     }
 
-    private static 
+    private static
         //#if FABRIC==1
         MutableText
         //#else
