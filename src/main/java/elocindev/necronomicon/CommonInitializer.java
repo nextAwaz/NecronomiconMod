@@ -50,7 +50,9 @@ public class CommonInitializer implements ModInitializer {
         try {
             NecConfigAPI.registerConfig(NecronomiconConfig.class);
         } catch (Exception e) {
-            LOGGER.error("Failed to register Necronomicon config", e);
+            LOGGER.error("Config registration failed — this is a fatal error. "
+                + "Any code accessing NecronomiconConfig.INSTANCE will fail.", e);
+            throw new RuntimeException("Failed to register Necronomicon config", e);
         }
 
         // Easter egg: intentional joke when certain mods are loaded

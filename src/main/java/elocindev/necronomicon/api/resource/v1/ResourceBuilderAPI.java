@@ -51,7 +51,7 @@ public class ResourceBuilderAPI {
      * 
      * @since 1.0.4
      */
-    public static final int PACK_FORMAT = 15;
+    public static final int PACK_FORMAT = 12;
 
     /**
      * Registers a builtin resource pack. Should be called in the constructor of your mod.

@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 public class FileUtils {
     public static void setPrettyPrint(Path path) {
@@ -27,7 +28,14 @@ public class FileUtils {
 
         String jsonString = sb.toString();
 
-        JsonElement jsonElement = JsonParser.parseString(jsonString);
+        JsonElement jsonElement;
+        try {
+            jsonElement = JsonParser.parseString(jsonString);
+        } catch (JsonSyntaxException e) {
+            System.err.println("Invalid JSON in file: " + path.toAbsolutePath());
+            e.printStackTrace();
+            return;
+        }
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String prettyJson = gson.toJson(jsonElement);

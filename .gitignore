@@ -26,8 +26,21 @@ classes
 # gradle
 build
 .gradle
+.gradle/
+.gradletasknamecache
+local.properties
 
-# other
+# generated
+versions/*/
+
+# minecraft
 run
+run/
+
+# logs
+*.log
+crash-reports/
+
+# os
 .DS_Store
 Thumbs.db

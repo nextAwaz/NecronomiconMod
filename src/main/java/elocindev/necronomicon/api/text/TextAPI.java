@@ -191,8 +191,8 @@ public class TextAPI {
             var rainbowColor = getEmptyText();
 
             for (int i = 0; i < string.length(); i++) {
-                double hue = 1.0/90.0 * (time - i - offset);
-                Style style = Style.EMPTY.withColor(Color.HSBtoRGB((float) (hue % 360), 0.5F, 1.0F));
+                double hue = 1.0 / 90.0 * (time - i - offset) % 1.0;
+                Style style = Style.EMPTY.withColor(Color.HSBtoRGB((float) hue, 0.5F, 1.0F));
 
                 rainbowColor.append(Text.literal(String.valueOf(string.charAt(i))).setStyle(style));
             }

@@ -82,7 +82,7 @@ public class ConfigBuilder {
 
                         Object configInstance = registerConfig(file, (Class<Object>) field.getType());
 
-                        field.set(field, configInstance);
+                        field.set(null, configInstance);
                     }
                 } catch (Exception e) {
                     throw new RuntimeException("Failed to initialize config field: " + field.getName(), e);
